@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -38,6 +39,12 @@ func ReadLineAsIntSlice(delim string) ([]int, error) {
 		is = append(is, iv)
 	}
 	return is, nil
+}
+
+// Round rounds off to the nearest whole number
+func Round(f float64, places int) float64 {
+	shift := math.Pow(10, float64(places))
+	return math.Floor(f*shift+.5) / shift
 }
 
 func main() {
